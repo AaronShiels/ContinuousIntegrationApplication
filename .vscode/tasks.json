@@ -7,7 +7,7 @@
 			"label": "build",
 			"type": "shell",
 			"command": "poetry",
-			"args": ["run", "pyinstaller", "./continuousintegrationdemo.spec"],
+			"args": ["run", "pyinstaller", "-F", "continuousintegrationdemo.spec"],
 			"problemMatcher": []
 		}
 	]

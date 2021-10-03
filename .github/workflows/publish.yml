@@ -1,0 +1,31 @@
+name: release
+on: [push]
+
+jobs:
+  publish:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Set up Poetry
+      uses: abatilo/actions-poetry@v2.0.0
+      with:
+        poetry-version: 1.1.10
+    - name: Install dependencies
+      run: |
+        poetry install
+    - name: Build executable
+      run: |
+        poetry run pyinstaller -F continuousintegrationdemo.spec
+    - name: Upload executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: continuousintegrationdemo
+        path: dist/continuousintegrationdemo.exe
+        if-no-files-found: error
