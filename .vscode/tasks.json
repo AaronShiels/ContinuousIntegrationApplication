@@ -9,6 +9,13 @@
 			"command": "poetry",
 			"args": ["run", "pyinstaller", "-F", "continuousintegrationdemo.spec"],
 			"problemMatcher": []
+		},
+		{
+			"label": "test",
+			"type": "shell",
+			"command": "poetry",
+			"args": ["run", "pytest"],
+			"problemMatcher": []
 		}
 	]
 }

@@ -18,11 +18,11 @@ jobs:
       with:
         poetry-version: 1.1.10
     - name: Install dependencies
-      run: |
-        poetry install
+      run: poetry install
+    - name: Run unit tests
+      run: poetry run pytest
     - name: Build executable
-      run: |
-        poetry run pyinstaller -F continuousintegrationdemo.spec
+      run: poetry run pyinstaller -F continuousintegrationdemo.spec
     - name: Upload executable
       uses: actions/upload-artifact@v2
       with:

@@ -8,6 +8,7 @@ authors = ["Aaron Shiels <aaron.shiels@outlook.com>"]
 python = "^3.9"
 Django = "^3.2.7"
 pyinstaller = "^4.5.1"
+pytest-django = "^4.4.0"
 
 [tool.poetry.dev-dependencies]
 
