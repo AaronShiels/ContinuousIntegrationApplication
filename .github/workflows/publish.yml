@@ -30,9 +30,17 @@ jobs:
       run: poetry run pytest
     - name: Build executable
       run: poetry run pyinstaller -F continuousintegrationdemo.spec
-    - name: Upload executable
+    - name: Upload release executable
+      if: ${{ github.event_name == 'push' }}
       uses: actions/upload-artifact@v2
       with:
-        name: continuousintegrationdemo
+        name: continuousintegrationdemo.1.0.0.${{ github.run_number }}
+        path: dist/continuousintegrationdemo.exe
+        if-no-files-found: error
+    - name: Upload pre-release executable
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: continuousintegrationdemo.1.0.0.${{ github.run_number }}-prerelease
         path: dist/continuousintegrationdemo.exe
         if-no-files-found: error
