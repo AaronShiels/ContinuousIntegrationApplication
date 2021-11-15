@@ -5,12 +5,12 @@ param(
 )
 
 If ($targetBranch) {
-    If ($targetBranch -match "^release\/(.*)$") {
+    If ($targetBranch -match "release\/(.*)") {
         Write-Output "$($matches[1])-pre$runNumber"
     } Else {
         Write-Output "pre$runNumber"
     }
-} ElseIf ($branch -match "^release\/(.*)$") {
+} ElseIf ($branch -match "release\/(.*)") {
     Write-Output "$($matches[1])-b$runNumber"
 } Else {
     Write-Output "d$runNumber"
