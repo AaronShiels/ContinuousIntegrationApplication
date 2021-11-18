@@ -4,6 +4,7 @@ param(
     [String]$targetBranch
 )
 
+
 If ($targetBranch) {
     If ($targetBranch -match "release\/(.*)") {
         Write-Output "$($matches[1])-pre$runNumber"
